@@ -15,7 +15,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import cn.opensrc.elasticlayout.R;
-import cn.opensrc.elasticlayout.view.ElasticLayout;
+import cn.opensrc.ellib.ElasticLayout;
 
 /**
  * Author:       sharp
@@ -60,7 +60,7 @@ public class ListViewAty extends AppCompatActivity{
         final ElasticLayout el = (ElasticLayout) findViewById(R.id.el);
         assert el != null;
         el.setRefreshMode(true);
-//        el.setLoadMoreMode(true);
+        el.setLoadMoreMode(true);
 
         el.setOnRefreshListener(new ElasticLayout.OnRefreshListener() {
             @Override

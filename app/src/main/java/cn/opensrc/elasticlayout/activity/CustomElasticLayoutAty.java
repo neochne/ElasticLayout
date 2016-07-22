@@ -10,8 +10,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import cn.opensrc.elasticlayout.R;
-import cn.opensrc.elasticlayout.view.ElasticLayout;
-import cn.opensrc.elasticlayout.view.YourElasticLayout;
+import cn.opensrc.elasticlayout.YourElasticLayout;
+import cn.opensrc.ellib.ElasticLayout;
 
 /**
  * Author:       sharp

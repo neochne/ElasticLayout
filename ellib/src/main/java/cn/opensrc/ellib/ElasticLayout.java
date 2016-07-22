@@ -1,4 +1,4 @@
-package cn.opensrc.elasticlayout.view;
+package cn.opensrc.ellib;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -22,7 +22,6 @@ import android.widget.ScrollView;
 import android.widget.Scroller;
 import android.widget.TextView;
 
-import cn.opensrc.elasticlayout.R;
 /**
  * Author:       sharp
  * Created on:   7/7/16 2:26 PM

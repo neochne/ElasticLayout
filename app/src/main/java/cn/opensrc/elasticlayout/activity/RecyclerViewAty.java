@@ -14,7 +14,7 @@ import java.util.TimerTask;
 
 import cn.opensrc.elasticlayout.R;
 import cn.opensrc.elasticlayout.adapter.RecyclerViewAdp;
-import cn.opensrc.elasticlayout.view.ElasticLayout;
+import cn.opensrc.ellib.ElasticLayout;
 
 /**
  * Author:       sharp
