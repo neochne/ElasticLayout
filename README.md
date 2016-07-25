@@ -6,7 +6,7 @@
 4. support extend ElasticLayout and implement your own special layout of your project.
 
 ## Picture
-!["demo"](http://b.hiphotos.baidu.com/image/pic/item/267f9e2f07082838fe21d969b099a9014c08f19b.gif)
+!["demo"](http://g.hiphotos.baidu.com/image/pic/item/0824ab18972bd407f342f59f73899e510eb309ce.gif)
 
 ## Use
 ## Contact
