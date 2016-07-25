@@ -30,9 +30,9 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.4.0'
 }
 
-def siteUrl = 'https://github.com/SharpChen/ElasticLayout'   // 项目的主页
-def gitUrl = 'git@github.com:SharpChen/ElasticLayout.git'   // Git仓库的url
-group = "cn.opensrc.elasticlayout"            // Maven Group ID for the artifact，一般填你唯一的包名
+def siteUrl = 'https://github.com/SharpChen/ElasticLayout'
+def gitUrl = 'git@github.com:SharpChen/ElasticLayout.git'
+group = "cn.opensrc.ellib"
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -52,8 +52,8 @@ install {
                 }
                 developers {
                     developer {
-                        id 'sharp'        //填写的一些基本信息
-                        name 'SharpChen'
+                        id 'sharpchen'
+                        name 'sharpchen'
                         email 'sharpchencn@gmail.com'
                     }
                 }
@@ -90,10 +90,10 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "ElasticLayout"    //发布到JCenter上的项目名字
+        name = "ElasticLayout"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
+        licenses = ['Apache-2.0']
         publish = true
     }
 }
