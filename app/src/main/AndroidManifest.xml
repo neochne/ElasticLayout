@@ -15,8 +15,11 @@
             </intent-filter>
 
         </activity>
+
         <activity android:name=".activity.RecyclerViewAty" android:label="RecyclerView">
+
         </activity>
+
         <activity android:name=".activity.ListViewAty" android:label="ListView">
 
         </activity>

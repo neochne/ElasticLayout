@@ -284,7 +284,7 @@ public class ElasticLayout extends LinearLayout {
     }
 
     /**
-     * if child scroll to top
+     * @return is child scroll to top
      */
     public boolean isChildScrollToTop() {
         if (android.os.Build.VERSION.SDK_INT < 14) {
@@ -302,7 +302,7 @@ public class ElasticLayout extends LinearLayout {
     }
 
     /**
-     * if child scroll to bottom
+     * @return is child scroll to bottom
      */
     public boolean isChildScrollToBottom() {
 

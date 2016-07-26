@@ -38,7 +38,7 @@ public class ListViewAty extends AppCompatActivity{
         ListView lv = (ListView) findViewById(R.id.lv);
         assert lv != null;
 
-        for (int i = 0; i < 3;i++){
+        for (int i = 0; i < 20;i++){
             mRefreshData.add("item"+i);
         }
 
