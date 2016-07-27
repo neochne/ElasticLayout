@@ -56,11 +56,10 @@ public class ElasticLayout extends LinearLayout {
     private int loadMorePosition = 100;
     private boolean mIsPullDownBeforeRefresh = true;
     private boolean mIsPullUpBeforeLoadMore = true;
-    private float mScrolledRate = .5f;
+    private float scrollRate = .5f;
     private boolean isUIRefreshing, isUILoading;
     private boolean refreshMode;
     private boolean loadMoreMode;
-    private int mElasticLayoutHeight,mAllChildSumHeight;
 
     // User is Scrolled ElasticLayout
     private boolean isScrolled;
@@ -104,17 +103,12 @@ public class ElasticLayout extends LinearLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        System.out.println("##ondraw......");
         computeScroll();
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        System.out.println("##onlayout......");
-
-        mElasticLayoutHeight = getHeight();
-        System.out.println("mElasticLayoutHeight="+mElasticLayoutHeight);
 
         if (isInited) return;
 
@@ -123,15 +117,16 @@ public class ElasticLayout extends LinearLayout {
         mFooterView.setVisibility(View.INVISIBLE);
         mHeaderViewHeight = mHeaderView.getHeight();
         mTarget = getChildAt(1);
-        // header scroll out to screen
+
+        // header scroll out of screen
         mHeaderViewLayoutParams.topMargin = -mHeaderViewHeight;
         isInited = true;
+
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        System.out.println("##onmeasure......");
         mFooterView.measure(MeasureSpec.makeMeasureSpec(getMeasuredWidth(),MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(200, MeasureSpec.AT_MOST));
     }
 
@@ -139,7 +134,6 @@ public class ElasticLayout extends LinearLayout {
     public void computeScroll() {
 
         if (mScroller.computeScrollOffset()) {
-            System.out.println("computeScroll");
             mHeaderViewLayoutParams.topMargin = -mHeaderViewHeight + mScrolledYDistance - mScroller.getCurrY();
             requestLayout();
             postInvalidate();
@@ -155,8 +149,6 @@ public class ElasticLayout extends LinearLayout {
 
             case MotionEvent.ACTION_DOWN:
                 mDownY = (int) ev.getY();
-                countSubChildSumHeight();
-                System.out.println("sumHeight="+mAllChildSumHeight);
                 break;
             case MotionEvent.ACTION_MOVE:
 
@@ -221,10 +213,9 @@ public class ElasticLayout extends LinearLayout {
 
         if (isUIRefreshing || isUILoading) return;
 
-        mScrolledYDistance = Math.round((event.getY() - mDownY) * mScrolledRate);
+        mScrolledYDistance = Math.round((event.getY() - mDownY) * scrollRate);
         if (Math.abs(mScrolledYDistance) >= mTouchSlop) isScrolled = true;
 
-        System.out.println("mFooterView Visible="+mFooterView.getVisibility());
         if (mScrolledYDistance > 0 && refreshMode) {
 
             onUIRefreshListener.onUIWholeRefresh(mScrolledYDistance);
@@ -311,7 +302,6 @@ public class ElasticLayout extends LinearLayout {
 //        }
 
         if (mTarget instanceof RecyclerView) {
-            System.out.println("mTarget=RecyclerView");
             RecyclerView recyclerView = (RecyclerView) mTarget;
             RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
             int count = recyclerView.getAdapter().getItemCount();
@@ -332,7 +322,6 @@ public class ElasticLayout extends LinearLayout {
             }
             return false;
         } else if (mTarget instanceof AbsListView) {
-            System.out.println("mTarget=AbsListView");
             final AbsListView absListView = (AbsListView) mTarget;
             int count = absListView.getAdapter().getCount();
             int firstPos = absListView.getFirstVisiblePosition();
@@ -342,25 +331,25 @@ public class ElasticLayout extends LinearLayout {
                 return true;
             }
 
-            if (firstPos == 0
-                    && absListView.getChildAt(0).getTop() >= absListView
-                    .getPaddingTop()) {
+            if (firstPos == 0 && absListView.getChildAt(0).getTop() >= absListView.getPaddingTop()) {
                 return false;
             }
 
             return false;
         } else if (mTarget instanceof ScrollView) {
-            System.out.println("mTarget=ScrollView");
             ScrollView scrollView = (ScrollView) mTarget;
             View view = (View) scrollView.getChildAt(scrollView.getChildCount() - 1);
             if (view != null) {
                 int diff = (view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY()));
                 if (diff == 0) {
                     return true;
+                }else{
+                    return false;
                 }
+
             }
         }
-        return false;
+        return true;
     }
 
     private void init() {
@@ -381,15 +370,6 @@ public class ElasticLayout extends LinearLayout {
         mCwRotateAnimRefreshing.setInterpolator(new LinearInterpolator());
     }
 
-    private void countSubChildSumHeight(){
-        mAllChildSumHeight = 0;
-        for (int i = 1;i < getChildCount()-1;i++) {
-            View child = getChildAt(i);
-            if (child == null)continue;
-            mAllChildSumHeight += child.getHeight() + ((LayoutParams)child.getLayoutParams()).topMargin + ((LayoutParams)child.getLayoutParams()).bottomMargin;
-        }
-    }
-
     // API start
 
     public void setRefreshPosition(int refreshPosition) {
@@ -398,6 +378,10 @@ public class ElasticLayout extends LinearLayout {
 
     public void setLoadMorePosition(int loadMorePosition) {
         this.loadMorePosition = loadMorePosition;
+    }
+
+    public void setScrollRate(float scrollRate) {
+        this.scrollRate = scrollRate;
     }
 
     public void setHeaderView(View headerView) {
