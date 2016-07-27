@@ -8,9 +8,23 @@
 ## Picture
 !["demo"](https://github.com/SharpChen/ElasticLayout/blob/master/el.gif)
 
-## Use
+## Useage
+### maven
+    <dependency>
+      <groupId>cn.opensrc.ellib</groupId>
+      <artifactId>elasticlayout</artifactId>
+      <version>1.0.1</version>
+      <type>pom</type>
+    </dependency>
+### Gradle
+    compile 'cn.opensrc.ellib:elasticlayout:1.0.1'
+### lvy
+    <dependency org='cn.opensrc.ellib' name='elasticlayout' rev='1.0.1'>
+      <artifact name='$AID' ext='pom'></artifact>
+    </dependency>
 ## Contact
 Email:sharpchencn@gmail.com
+QQ交流群:469644904
 
 
 
