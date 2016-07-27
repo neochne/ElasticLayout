@@ -8,7 +8,7 @@
 ## Picture
 !["demo"](https://github.com/SharpChen/ElasticLayout/blob/master/el.gif)
 
-## Useage
+## Usage
 ### maven
     <dependency>
       <groupId>cn.opensrc.ellib</groupId>
