@@ -20,8 +20,8 @@ import cn.opensrc.ellib.ElasticLayout;
  * Revisions:
  */
 public class CustomElasticLayoutAty extends AppCompatActivity{
-    private String mTxt = "习近平总书记19日上午来到宁夏回族自治区银川市新城清真寺了解宗教活动开展情况。在礼拜大殿，习近平与宁夏伊斯兰教界人士亲切交流，通过他们向广大穆斯林群众致以亲切问候和良好祝愿。习近平说，我国的各民族和宗教是在5000多年的文明史中孕育发展起来的，只有落地生根才能生生不息。习近平希望大家继续发扬爱国爱教传统，在脱贫致富奔小康的道路上发挥积极作用。在场的伊斯兰教界人士表示，将认真贯彻落实全国宗教工作会议精神，既念好古兰经，又念好致富经，为国家发展营造和谐的环境。\n" +
-            "        坐在北京西站的地上，提起在肯德基门口拉横幅的人群，赵大龙难掩气愤。他的嘴角还肿着，左眼仍有青紫，右手手臂内侧有一块不大不小的乌青。";
+    private String mTxt = "有哪些考试作弊的奇葩经历？\n 开考十五分钟左右，一个考生才晃晃悠悠的走进来，酒气浓重，看那个状态就已经喝多了然后他领了卷子，坐下开始考试，写了没多一会，他直接吐了，吐了一桌子，那个味道喝酒的兄弟们估计应该都知道，当时那销魂的气味简直了……还是北方的冬天，室内空气本身就不怎么流通……\n" +
+            "监考老师们直接弃考场而去，我们大摇大摆的掏出小抄，顺利完成考试，当时我交卷的时候，那个喝醉的兄弟还在打扫自己的桌子……";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +81,7 @@ public class CustomElasticLayoutAty extends AppCompatActivity{
             @Override
             public void onLoadMoreFinish() {
                 Toast.makeText(CustomElasticLayoutAty.this,"Loadmore Completed",Toast.LENGTH_SHORT).show();
-                String currText = tv.getText() + mTxt;
+                String currText = tv.getText() + "\n" + mTxt;
                 tv.setText(currText);
             }
         });
