@@ -22,7 +22,7 @@
     <dependency org='cn.opensrc.ellib' name='elasticlayout' rev='1.1.0'>
       <artifact name='$AID' ext='pom'></artifact>
     </dependency>
-## Contact
+## Contact us
 Email:sharpchencn@gmail.com
 QQ交流群:469644904
 
